@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Redirecting…</title>
   <script>
-    // Extract qrId from query string and redirect
     const params = new URLSearchParams(window.location.search);
     const qrId = params.get('qrId');
-
+  
     if (qrId) {
-      // Redirect to mobile app deeplink
-      window.location.href = `qrifyme://qr-activate-success?qrId=${qrId}`;
+      // ⚠️ Použi `.replace` namiesto `.href`!
+      window.location.replace(`qrifyme://qr-activate-success?qrId=${qrId}`);
     } else {
       document.body.innerHTML = '<h1>❌ Missing qrId parameter.</h1>';
     }
